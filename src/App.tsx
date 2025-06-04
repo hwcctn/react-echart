@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import "./App.css";
+import DurationDistribution from "./views/duration-distribution";
+import PlatformUsage from "./views/platform-usage";
+import SkipAnalysis from "./views/skip-analysis";
+import StartReasons from "./views/start-reasons";
+import TopArtists from "./views/top-artists";
+import Clock from "./views/clock";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        height: "100vh",
+
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ width: "500px", height: "50%" }}>
+        <PlatformUsage></PlatformUsage>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div style={{ width: "500px", height: "50%" }}>
+        <TopArtists></TopArtists>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <div style={{ width: "500px", height: "50%" }}>
+        <StartReasons></StartReasons>
+      </div>
+      <div style={{ width: "500px", height: "50%" }}>
+        <DurationDistribution></DurationDistribution>
+      </div>
+      <div style={{ width: "500px", height: "50%" }}>
+        <SkipAnalysis></SkipAnalysis>
+      </div>
+      <div style={{ width: "500px", height: "50%" }}>
+        <Clock></Clock>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
