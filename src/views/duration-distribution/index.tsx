@@ -2,10 +2,13 @@ import React, { memo } from "react";
 import type { FC, ReactNode } from "react";
 import type { EChartsOption } from "echarts";
 import Echarts from "../../components/Echarts";
+import type { DurationDistributionData } from "../utils/formatData";
 interface IProps {
   children?: ReactNode;
+  data: DurationDistributionData;
 }
-const DurationDistribution: FC<IProps> = () => {
+const DurationDistribution: FC<IProps> = ({ data }) => {
+  const { duration, play_count, play_percent } = data;
   const option: EChartsOption = {
     title: {
       text: "播放时长分布",
@@ -29,15 +32,7 @@ const DurationDistribution: FC<IProps> = () => {
     },
     yAxis: {
       type: "category",
-      data: [
-        "0秒 (立即跳过)",
-        "1-10秒",
-        "10-30秒",
-        "30秒-1分钟",
-        "1-3分钟",
-        "3-5分钟",
-        "5分钟以上",
-      ],
+      data: duration,
     },
     series: [
       {
@@ -51,7 +46,7 @@ const DurationDistribution: FC<IProps> = () => {
           show: true,
           position: "insideRight",
         },
-        data: [3733, 45216, 6711, 5182, 30714, 49783, 8521],
+        data: play_count,
       },
       {
         name: "占比 (%)",
@@ -65,7 +60,7 @@ const DurationDistribution: FC<IProps> = () => {
           position: "insideRight",
           formatter: "{c}%",
         },
-        data: [2.49, 30.17, 4.48, 3.46, 20.5, 33.22, 5.69],
+        data: play_percent,
       },
     ],
   };

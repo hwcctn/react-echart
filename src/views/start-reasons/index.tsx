@@ -2,10 +2,13 @@ import React, { memo } from "react";
 import type { FC, ReactNode } from "react";
 import Echarts from "../../components/Echarts";
 import type { EChartsOption } from "echarts";
+import type { StartReasonsData } from "../utils/formatData";
 interface IProps {
   children?: ReactNode;
+  data: StartReasonsData;
 }
-const StartReasons: FC<IProps> = () => {
+const StartReasons: FC<IProps> = ({ data }) => {
+  // console.log("sss", data.data);
   const option = {
     title: {
       text: "播放原因词云",
@@ -27,21 +30,7 @@ const StartReasons: FC<IProps> = () => {
               Math.round(Math.random() * 160),
             ].join(",")})`,
         },
-        data: [
-          { name: "trackdone", value: 76655 },
-          { name: "fwdbtn", value: 53793 },
-          { name: "clickrow", value: 11228 },
-          { name: "appload", value: 3729 },
-          { name: "backbtn", value: 2205 },
-          { name: "playbtn", value: 1458 },
-          { name: "remote", value: 477 },
-          { name: "trackerror", value: 120 },
-          { name: "unknown", value: 23 },
-          { name: "nextbtn", value: 21 },
-          { name: "popup", value: 5 },
-          { name: "endplay", value: 2 },
-          { name: "autoplay", value: 1 },
-        ],
+        data: data.data,
       },
     ],
   } as EChartsOption;

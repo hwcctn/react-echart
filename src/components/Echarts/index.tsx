@@ -17,9 +17,9 @@ interface IProps {
 const Echarts: FC<IProps> = ({ option }) => {
   const box = useRef(null);
   useEffect(() => {
-    console.log(box.current);
+    // console.log(box.current);
     const myChart = echarts.init(box.current);
-    console.log(option);
+    // console.log(option);
     if (option != null) {
       myChart.setOption(option);
     } else {
